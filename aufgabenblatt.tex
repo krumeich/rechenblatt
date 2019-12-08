@@ -1,0 +1,40 @@
+\documentclass[a4paper]{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tabularx}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{2cm}}
+
+\usepackage{luacode}
+\begin{luacode}
+
+  aufg = require "rechnen"
+
+  function print_aufgaben()
+    for i=1, 22 do
+    tex.print("$")
+    tex.print(rechnen.create(100,10))
+    tex.print("$ & $")
+    tex.print(rechnen.create(100,15))
+    tex.print("$ & $")
+    tex.print(rechnen.create(100,20))
+    tex.print("$")
+    tex.print("\\\\[2ex]")
+    end
+  end
+
+\end{luacode}
+
+\begin{document}
+
+\begin{tabular}{R@{\hspace{3cm}}R@{\hspace{3cm}}R}
+  \directlua{print_aufgaben()}
+\end{tabular}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,6 @@
+auto/
+*~
+*.aux
+*.pdf
+*.dvi
+*.log
