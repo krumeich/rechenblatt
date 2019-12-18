@@ -23,7 +23,7 @@ function ergebnis_positiv(z1)
 end
 
 function ergebnis_nicht_groesser_als(z1)
-   return z1 <= 110
+   return z1 <= 100
 end
 
 function kein_uebergang(z1, z2, operation, grenze)
@@ -36,7 +36,10 @@ function rechnen.create(j, k)
    local operator = rndop()
    local operation = operations[operator]
    local aufgabe = {}
-   if ergebnis_positiv(operation(z1, z2)) and ergebnis_nicht_groesser_als(operation(z1, z2)) then
+   if ergebnis_positiv(operation(z1, z2))
+      and ergebnis_nicht_groesser_als(operation(z1, z2))
+      and kein_uebergang(z1, z2, operation, 10)
+   then
       table.insert(aufgabe, z1)
       table.insert(aufgabe, operator)
       table.insert(aufgabe, z2)
