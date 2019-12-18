@@ -6,35 +6,25 @@
 \newcolumntype{R}{>{\raggedleft\arraybackslash}p{2cm}}
 
 \usepackage{luacode}
+
 \begin{luacode}
 
   aufg = require "rechnen"
+  template = require "template"
 
-  function print_aufgaben()
-    for i=1, 22 do
-    tex.print("$")
-    tex.print(rechnen.create(100,10))
-    tex.print("$ & $")
-    tex.print(rechnen.create(100,15))
-    tex.print("$ & $")
-    tex.print(rechnen.create(100,20))
-    tex.print("$")
-    tex.print("\\\\[2ex]")
-    end
-  end
 
 \end{luacode}
 
 \begin{document}
 
-\begin{center}
-  {\Large \textsf{Rechenblatt}}
-\end{center}
-\vspace{1cm}
-
-\begin{tabular}{R@{\hspace{3cm}}R@{\hspace{3cm}}R}
-  \directlua{print_aufgaben()}
-\end{tabular}
+\directlua{
+  for j=1,100 do
+  template.print_header(tex)
+  template.print_table_env_begin(tex)
+  template.print_aufgaben(tex)
+  template.print_table_env_end(tex)
+  end
+}
 
 \end{document}
 
