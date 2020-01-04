@@ -3,7 +3,8 @@
 math.randomseed( os.time() )
 math.random(); math.random(); math.random()
 
-rechnen={}
+
+rechnen={failed=0}
 
 local operations = {}
 operations["+"] = function(a,b) return a+b end;
@@ -36,17 +37,18 @@ function rechnen.create(j, k)
    local operator = rndop()
    local operation = operations[operator]
    local aufgabe = {}
+   table.insert(aufgabe, z1)
+   table.insert(aufgabe, operator)
+   table.insert(aufgabe, z2)
+   table.insert(aufgabe, " = ")
    if ergebnis_positiv(operation(z1, z2))
       and ergebnis_nicht_groesser_als(operation(z1, z2))
       and kein_uebergang(z1, z2, operation, 10)
    then
-      table.insert(aufgabe, z1)
-      table.insert(aufgabe, operator)
-      table.insert(aufgabe, z2)
-      table.insert(aufgabe, " = ")
-      table.concat(aufgabe)
       return table.concat(aufgabe)
    else
+      rechnen.failed = rechnen.failed+1
+      print(table.concat(aufgabe))
       return rechnen.create()
    end
 end
