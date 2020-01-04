@@ -24,7 +24,7 @@ function ergebnis_positiv(z1)
 end
 
 function ergebnis_nicht_groesser_als(z1)
-   return z1 <= 100
+   return z1 <= 1000
 end
 
 function kein_uebergang(z1, z2, operation, grenze)
@@ -32,8 +32,8 @@ function kein_uebergang(z1, z2, operation, grenze)
 end
 
 function rechnen.create(j, k)
-   local z1 = math.random(j or 100)
-   local z2 = math.random(k or 10)
+   local z1 = math.random(j or 100)+100
+   local z2 = math.random(k or 100)+10
    local operator = rndop()
    local operation = operations[operator]
    local aufgabe = {}
@@ -43,7 +43,7 @@ function rechnen.create(j, k)
    table.insert(aufgabe, " = ")
    if ergebnis_positiv(operation(z1, z2))
       and ergebnis_nicht_groesser_als(operation(z1, z2))
-      and kein_uebergang(z1, z2, operation, 10)
+      and kein_uebergang(z1, z2, operation, 100)
    then
       return table.concat(aufgabe)
    else

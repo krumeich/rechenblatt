@@ -1,7 +1,7 @@
 template={}
 
 function template.print_header(tex)
-   tex.print([[\begin{center}\textsf{{\Large Rechenblatt}\\Zahlenraum bis 100\\Kein Zehnerübergang}\end{center}\vspace{1cm}]])
+   tex.print([[\begin{center}\textsf{{\Large Rechenblatt}\\Zahlenraum bis 1000\\Ohne Hunderterübergang}\end{center}\vspace{1cm}]])
 end
 
 function template.print_table_env_begin(tex)
@@ -15,11 +15,11 @@ end
 function template.print_aufgaben(tex)
    for i=1, 15 do
       tex.print("$")
-      tex.print(rechnen.create(100,10))
+      tex.print(rechnen.create(900,99))
       tex.print("$ & $")
-      tex.print(rechnen.create(100,10))
+      tex.print(rechnen.create(900,99))
       tex.print("$ & $")
-      tex.print(rechnen.create(100,10))
+      tex.print(rechnen.create(900,99))
       tex.print("$")
       tex.print("\\\\[2ex]")
    end
