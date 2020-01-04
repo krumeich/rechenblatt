@@ -5,26 +5,16 @@
 \usepackage{tabularx}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}p{2cm}}
 
-\usepackage{luacode}
-
-\begin{luacode}
-
-  aufg = require "rechnen"
-  template = require "template"
-
-
-\end{luacode}
-
 \begin{document}
 
 \directlua{
+  require "template"
   for j=1,1 do
-  template.print_header(tex)
-  template.print_table_env_begin(tex)
-  template.print_aufgaben(tex)
-  template.print_table_env_end(tex)
+    template.print_header(tex)
+    template.print_table_env_begin(tex)
+    template.print_aufgaben(tex)
+    template.print_table_env_end(tex)
   end
-  print("Failed attempts:", rechnen.failed)
 }
 
 \end{document}

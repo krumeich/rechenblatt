@@ -13,6 +13,7 @@ function template.print_table_env_end(tex)
 end   
 
 function template.print_aufgaben(tex)
+   require "rechnen"
    for i=1, 15 do
       tex.print("$")
       tex.print(rechnen.create(900,99))
