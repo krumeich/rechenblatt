@@ -1,6 +1,6 @@
 #!/usr/bin/env lua
 
-math.randomseed( os.time() )
+math.randomseed( os.clock() )
 math.random(); math.random(); math.random()
 
 
