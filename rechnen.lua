@@ -1,8 +1,6 @@
 #!/usr/bin/env lua
 
-math.randomseed( os.clock() )
-math.random(); math.random(); math.random()
-
+math.randomseed( os.clock() * 1000000000 )
 
 rechnen={failed=0}
 
@@ -11,6 +9,7 @@ operations["+"] = function(a,b) return a+b end;
 operations["-"] = function(a,b) return a-b end;
 
 function rndop()
+   math.random(); math.random(); math.random()
    local o = math.random(2)
    if o%2==1 then
       return "+"
