@@ -28,7 +28,7 @@ function template.print_aufgaben(tex)
       tex.print(template.print_single_aufgabe(tex))
       tex.print(" & ")
       tex.print(template.print_single_aufgabe(tex))
-      tex.print("\\\\")
+      tex.print("\\\\[1ex]")
    end
 end
 
