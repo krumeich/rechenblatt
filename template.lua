@@ -1,27 +1,47 @@
 template={}
 
 function template.print_header(tex)
-   tex.print([[\begin{center}\textsf{{\Large Rechenblatt}\\Zahlenraum bis 1.000.000}\end{center}\vspace{0.5cm}]])
+   tex.print([[\begin{center}\textsf{{\Large Rechenblatt}\\Zahlenraum bis 1.000.000}\end{center}\vspace{1cm}]])
 end
 
 function template.print_table_env_begin(tex)
-   tex.print([[\begin{tabular}{r@{\hspace{0.5em}}c@{\hspace{0.5em}}r@{\hspace{0.5em}}l@{\hspace{4cm}}r@{\hspace{0.5em}}c@{\hspace{0.5em}}r@{\hspace{0.5em}}l@{\hspace{4cm}}r@{\hspace{0.5em}}c@{\hspace{0.5em}}r@{\hspace{0.5em}}l}]])
-end   
+   tex.print([[\begin{tabular}{@{}c@{\hspace{1.5cm}}c@{\hspace{1.5cm}}c@{}}]])
+end
 
 function template.print_table_env_end(tex)
   tex.print([[\end{tabular}\pagebreak]])
 end   
 
+function template.print_aufgabe_begin(tex)
+   tex.print([[\begin{tabular}{@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}c@{\hspace{1pt}}}]])
+end   
+
+function template.print_aufgabe_end(tex)
+  tex.print([[\end{tabular}]])
+end   
+
 function template.print_aufgaben(tex)
    require "rechnen"
-   for i=1, 8 do
-      tex.print(rechnen.create(999,999))
+   for i=1, 6 do
+      tex.print(template.print_single_aufgabe(tex))
       tex.print(" & ")
-      tex.print(rechnen.create(999,999))
+      tex.print(template.print_single_aufgabe(tex))
       tex.print(" & ")
-      tex.print(rechnen.create(999,999))
-      tex.print("\\\\[2.4cm]")
+      tex.print(template.print_single_aufgabe(tex))
+      tex.print("\\\\")
    end
+end
+
+function template.print_single_aufgabe(tex)
+   require "rechnen"
+   template.print_aufgabe_begin(tex)
+   tex.print(rechnen.create(899,899))
+   tex.print("\\\\")
+   tex.print(rechnen.hilfsbereich())
+   tex.print("\\hline")
+   tex.print(rechnen.loesungszeile())
+   tex.print("\\\\")
+   template.print_aufgabe_end(tex)   
 end
 
 return template
