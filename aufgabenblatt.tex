@@ -3,15 +3,18 @@
 
 \pagestyle{empty}
 
+\usepackage{fontspec}
 \usepackage{tabularx}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}p{2cm}}
 
+\setmainfont{FreeSans}
+
 \begin{document}
 
-{\large
+{
 \directlua{
   require "template"
-  for j=1,1 do
+  for j=1, 20 do
     template.print_header(tex)
     template.print_table_env_begin(tex)
     template.print_aufgaben(tex)

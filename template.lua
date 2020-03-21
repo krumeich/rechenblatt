@@ -22,7 +22,7 @@ end
 
 function template.print_aufgaben(tex)
    require "rechnen"
-   for i=1, 5 do
+   for i=1, 4 do
       tex.print(template.print_single_aufgabe(tex))
       tex.print(" & ")
       tex.print(template.print_single_aufgabe(tex))

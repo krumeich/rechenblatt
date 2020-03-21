@@ -41,7 +41,7 @@ end
 
 function rechnen.small(c)
    local result = {}
-   table.insert(result, [[{\footnotesize \parbox[b][2ex][t]{1em}{]])
+   table.insert(result, [[{\footnotesize \parbox[t][0ex][t]{1em}{\raggedleft]])
    table.insert(result, c)
    table.insert(result, "}}")
    return table.concat(result)
