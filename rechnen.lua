@@ -39,11 +39,19 @@ function rechnen.inbox(c)
    return table.concat(result)
 end
 
-
-function rechnen.printnumber(z)
+function rechnen.small(c)
    local result = {}
+   table.insert(result, [[{\footnotesize \parbox[b][2ex][t]{1em}{]])
+   table.insert(result, c)
+   table.insert(result, "}}")
+   return table.concat(result)
+end
+
+function rechnen.printnumber(z, printer)
+   local result = {}
+   local p = printer or function(x) return x end
    for c in string.gmatch(tostring(z), ".") do
-      table.insert(result, rechnen.inbox(c))
+      table.insert(result, p(c))
       table.insert(result, " & ")
    end
    return table.concat(result)
@@ -55,13 +63,14 @@ function rechnen.create(j, k)
    local operator = "\\cdot"
    local operation = operations["\\cdot"]
    local aufgabe = {}
-   table.insert(aufgabe, rechnen.printnumber(z1))
+   table.insert(aufgabe, rechnen.printnumber(z1, rechnen.inbox))
    table.insert(aufgabe, rechnen.inbox(operator))
    table.insert(aufgabe, " & ")
-   table.insert(aufgabe, rechnen.printnumber(z2))
+   table.insert(aufgabe, rechnen.printnumber(z2, rechnen.inbox))
    if ergebnis_positiv(operation(z1, z2))
    then
---      print (table.concat(aufgabe))
+      --      print (table.concat(aufgabe))
+      rechnen.kontrolle = operation(z1, z2)
       return table.concat(aufgabe)
    else
       rechnen.failed = rechnen.failed+1
@@ -98,6 +107,12 @@ function rechnen.loesungszeile()
       table.insert(result, rechnen.inbox(" ~"))
       table.insert(result, " & ")
    end
+   table.insert(result, [[\\]])
+   for i =1, 7- string.len(tostring(rechnen.kontrolle)) do
+      table.insert(result, " & ")
+   end
+
+   table.insert(result, rechnen.printnumber(rechnen.kontrolle, rechnen.small))
 
    return table.concat(result)
 end
