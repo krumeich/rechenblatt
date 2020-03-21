@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt]{scrartcl}
-\areaset{17cm}{25cm}
+\areaset{18cm}{28cm}
 
 \pagestyle{empty}
 
@@ -8,16 +8,17 @@
 
 \begin{document}
 
+{\large
 \directlua{
   require "template"
-  for j=1,5 do
+  for j=1,1 do
     template.print_header(tex)
     template.print_table_env_begin(tex)
     template.print_aufgaben(tex)
     template.print_table_env_end(tex)
   end
 }
-
+}
 \end{document}
 
 
