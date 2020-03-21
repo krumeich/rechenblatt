@@ -38,9 +38,9 @@ function template.print_single_aufgabe(tex)
    tex.print(rechnen.create(899,899))
    tex.print("\\\\")
    tex.print(rechnen.hilfsbereich())
-   tex.print("\\hline")
+   tex.print("[1ex]")
    tex.print(rechnen.loesungszeile())
-   tex.print("\\\\")
+   tex.print("\\\\[1cm]")
    template.print_aufgabe_end(tex)   
 end
 

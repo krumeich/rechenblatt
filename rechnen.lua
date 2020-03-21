@@ -98,7 +98,6 @@ function rechnen.loesungszeile()
       table.insert(result, rechnen.inbox(" ~"))
       table.insert(result, " & ")
    end
-   table.insert(result, [[\\]])
 
    return table.concat(result)
 end
