@@ -1,7 +1,7 @@
 template={}
 
 function template.print_header(tex)
-   tex.print([[\begin{center}\textsf{Multiplikation bis 1.000.000}\end{center}\vspace{1cm}]])
+--   tex.print([[\begin{center}\textsf{Multiplikation bis 1.000.000}\end{center}\vspace{1cm}]])
 end
 
 function template.print_table_env_begin(tex)
@@ -9,7 +9,7 @@ function template.print_table_env_begin(tex)
 end
 
 function template.print_table_env_end(tex)
-  tex.print([[\end{tabular}\pagebreak]])
+  tex.print([[\end{tabular}\clearpage]])
 end   
 
 function template.print_aufgabe_begin(tex)
@@ -22,7 +22,7 @@ end
 
 function template.print_aufgaben(tex)
    require "rechnen"
-   for i=1, 4 do
+   for i=1, 5 do
       tex.print(template.print_single_aufgabe(tex))
       tex.print(" & ")
       tex.print(template.print_single_aufgabe(tex))
