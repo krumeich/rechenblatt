@@ -1,22 +1,27 @@
-\documentclass[a4paper]{scrartcl}
+\documentclass[a4paper,12pt]{scrartcl}
+\areaset{18cm}{27cm}
 
 \pagestyle{empty}
 
+\usepackage{fontspec}
 \usepackage{tabularx}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}p{2cm}}
 
+\setmainfont{FreeSans}
+
 \begin{document}
 
+{
 \directlua{
   require "template"
-  for j=1,1 do
+  for j=1, 100 do
     template.print_header(tex)
     template.print_table_env_begin(tex)
     template.print_aufgaben(tex)
     template.print_table_env_end(tex)
   end
 }
-
+}
 \end{document}
 
 
